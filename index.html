@@ -4,412 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Santhosh - AEM Developer Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #764ba2;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #764ba2;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero {
-              background-image: url('your-image.jpg'); /* Replace with your image path */
-              background-size: cover;
-              background-position: center;
-              background-repeat: no-repeat;
-              
-        }
-
-        .hero-content {
-            z-index: 2;
-            max-width: 800px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        /* Floating particles */
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        /* Sections */
-        section {
-            padding: 80px 0;
-            background: white;
-            margin: 2rem 0;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .profile-card {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px;
-            text-align: center;
-            transform: perspective(1000px) rotateY(-10deg);
-            transition: transform 0.3s ease;
-        }
-
-        .profile-card:hover {
-            transform: perspective(1000px) rotateY(0deg);
-        }
-
-        .profile-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        /* Experience Section */
-        .experience-timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline-item {
-            background: white;
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            position: relative;
-            left: 0;
-            opacity: 0;
-            animation: slideInLeft 0.6s ease forwards;
-        }
-
-        .timeline-item:nth-child(even) {
-            animation: slideInRight 0.6s ease forwards;
-        }
-
-        .company {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #764ba2;
-            margin-bottom: 0.5rem;
-        }
-
-        .role {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .duration {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .skill-card {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-
-        .skill-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .contact-info {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .contact-item i {
-            margin-right: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .contact-form {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            padding: 1rem;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #764ba2;
-        }
-
-        .submit-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-        }
-        @media (max-width: 768px) {
-          .hero {
-            background-image: url('your-mobile-image.jpg'); /* Smaller image for mobile */
-          }
-        }
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .profile-card {
-                transform: none;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <!-- Header -->
@@ -469,18 +64,6 @@
             <h2 class="section-title">Work Experience</h2>
             <div class="experience-timeline">
                 <div class="timeline-item">
-                    <div class="company">Caterpillar (via Accenture)</div>
-                    <div class="role">Developer</div>
-                    <div class="duration">February 2023 – Present</div>
-                    <ul>
-                        <li>Engineered advanced AEM 6.5 Touch UI components using Apache Felix OSGi framework</li>
-                        <li>Debugged and enhanced AEM applications for seamless user experiences</li>
-                        <li>Developed technical documentation and contributed to coding best practices</li>
-                        <li>Worked with GitHub and Git clients for version control</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item">
                     <div class="company">Accenture</div>
                     <div class="role">Applications Development Analyst</div>
                     <div class="duration">June 2021 – Present</div>
@@ -490,11 +73,25 @@
                         <li>Actively participated in Agile ceremonies for continuous improvement</li>
                         <li>Improved workflow efficiency and quality through component optimization</li>
                     </ul>
+                    
+                </div>
+
+                <div class="timeline-item">
+                    <div class="company">Caterpillar (via Accenture)</div>
+                    <div class="role">AEM Developer</div>
+                    <div class="duration">February 2023 – Present</div>
+                    <ul>
+                        <li>Engineered advanced AEM 6.5 Touch UI components using Apache Felix OSGi framework</li>
+                        <li>Debugged and enhanced AEM applications for seamless user experiences</li>
+                        <li>Developed technical documentation and contributed to coding best practices</li>
+                        <li>Worked with GitHub and Git clients for version control</li>
+                    </ul>
+                    <div class="duration" ><a href="https://www.cat.com/en_US.html" target="_blank">Link</a></div>
                 </div>
 
                 <div class="timeline-item">
                     <div class="company">TD Bank (via Accenture)</div>
-                    <div class="role">AEM Developer</div>
+                    <div class="role">AEM Author</div>
                     <div class="duration">September 2021 – January 2023</div>
                     <ul>
                         <li>Designed and published web and mobile content adhering to brand standards</li>
@@ -502,6 +99,7 @@
                         <li>Conducted quality assurance checks for content accuracy</li>
                         <li>Increased company blog readership by 30% over six months</li>
                     </ul>
+                    <div class="duration" ><a href="https://www.td.com/us/en/personal-banking" target="_blank">Link</a></div>
                 </div>
             </div>
         </div>
@@ -513,7 +111,9 @@
             <h2 class="section-title">Technical Skills</h2>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <div class="skill-icon">🎯</div>
+                    <div class="skill-icon">
+                        <img src="/assets/images/aem-logo.svg" alt="Adobe Experience Manager" />
+                      </div>
                     <h3>Adobe Experience Manager</h3>
                     <p>AEM 6.4 & 6.5, Touch UI Components, Workflows, DAM</p>
                 </div>
@@ -545,7 +145,7 @@
                     <h3>Contact Information</h3>
                     <div class="contact-item">
                         <span>📧</span>
-                        <span>santhosh.puttaraju7@gmail.com</span>
+                        <span>santhosh.puttaraju1@gmail.com</span>
                     </div>
                     <div class="contact-item">
                         <span>📱</span>
@@ -562,7 +162,7 @@
                 </div>
                 <div class="contact-form">
                     <h3>Send a Message</h3>
-                    <form id="contactForm">
+                    <form action="https://formspree.io/f/mqabnlgp" method="POST">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
@@ -582,74 +182,6 @@
         </div>
     </section>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = 'none';
-            }
-        });
-
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            // Simple validation
-            if (name && email && message) {
-                alert('Thank you for your message! I will get back to you soon.');
-                this.reset();
-            } else {
-                alert('Please fill in all fields.');
-            }
-        });
-
-        // Animate timeline items on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.timeline-item').forEach(item => {
-            item.style.animationPlayState = 'paused';
-            observer.observe(item);
-        });
-
-        // Add floating animation to skill cards
-        document.querySelectorAll('.skill-card').forEach((card, index) => {
-            card.style.animationDelay = `${index * 0.2}s`;
-        });
-    </script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>
