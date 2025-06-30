@@ -77,6 +77,13 @@
             position: relative;
             overflow: hidden;
         }
+        .hero {
+              background-image: url('your-image.jpg'); /* Replace with your image path */
+              background-size: cover;
+              background-position: center;
+              background-repeat: no-repeat;
+              
+        }
 
         .hero-content {
             z-index: 2;
@@ -334,7 +341,11 @@
         .submit-btn:hover {
             transform: translateY(-2px);
         }
-
+        @media (max-width: 768px) {
+          .hero {
+            background-image: url('your-mobile-image.jpg'); /* Smaller image for mobile */
+          }
+        }
         /* Animations */
         @keyframes fadeInUp {
             from {
